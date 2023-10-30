@@ -34,7 +34,8 @@ def guardar_titulo_Search(rta, file):
                 # else:
         f = open(file, "a")
         f.write(titulo)
-        f.close()     
+        f.close() 
+        print(r"grabo bien")    
         return True
 
 def llamar_endpoint(d, ubicacion):
