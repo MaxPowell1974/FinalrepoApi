@@ -1,5 +1,6 @@
 import requests
 import json
+import os
 
 #def guardar_contenido_archivo(ubicacion, contenido):
 #Variable: todo en minuscula seeparado por guiones bajos
@@ -15,18 +16,23 @@ def guardar_contenido_archivo(ubicacion, contenido):
 
     #Guardo el json obtenido en un archivo
          #usar a para append  
-        t = open(ubicacion,"a") 
+        if not os.path.exists(ubicacion):
+                t = open(ubicacion,"w") 
+        else:
+                t = open(ubicacion,"a") 
         t.write(contenido)
         t.close()
         return True
 
 def guardar_titulo_Search(rta, file):
-        
-                for rta  in rta['Search']:
-                        titulo = rta['Title'] + '\n'
+        for rta  in rta['Search']:
+                titulo = rta['Title'] + '\n'
+                if not os.path.exists(file):
+                        t = open(file,"w") 
+                else:
                         f = open(file, "a")
-                        f.write(titulo)
-                        f.close()     
+                f.write(titulo)
+                f.close()     
                 return True
 
 def llamar_endpoint(d, ubicacion):
