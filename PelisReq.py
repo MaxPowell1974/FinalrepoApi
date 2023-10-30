@@ -11,16 +11,21 @@ import os
 #dividir en main logica guardar y funciones 
 #investigar reglas de escritura de python 
 #investigar subirlo a Git
+#Agregamos algo en Stagging
+
+def valid_create(ruta):
+        if not os.path.exists(ruta):
+                head_tail = os.path.split(ruta) 
+                os.makedirs(head_tail[0])        
+        return True
+
 
 def guardar_contenido_archivo(ubicacion, contenido):
 
     #Guardo el json obtenido en un archivo
-         #usar a para append  
-        if not os.path.exists(ubicacion):
-                os.mkdir("pelis")
-                t = open(ubicacion,"w+") 
-        else:
-                t = open(ubicacion,"a") 
+ 
+        valid_create(ubicacion)
+        t = open(ubicacion,"a+") 
         t.write(contenido)
         t.close()
         return True
@@ -32,7 +37,8 @@ def guardar_titulo_Search(rta, file):
                       
               #          t = open(file,"w+") 
                 # else:
-        f = open(file, "a")
+        valid_create(file)
+        f = open(file, "a+")
         f.write(titulo)
         f.close() 
           
@@ -62,9 +68,8 @@ rtas = {
 }
 
 
-file_Out = r"pelis\output.json"
-file_title_search = r"pelis\titles.json"
-#file_title = r"pelis\titles.json"
+file_Out = r"pelis\Pru\otro\output.json"
+file_title_search = r"pelis\algo\otro\titles.json"
 
 #ejecuta EndPoint y guarda la respuesta
 llamar_endpoint(d, file_Out)
