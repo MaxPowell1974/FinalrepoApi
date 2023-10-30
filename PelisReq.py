@@ -64,6 +64,7 @@ rtas = {
 
 file_Out = r"pelis\output.json"
 file_title_search = r"pelis\titles.json"
+#file_title = r"pelis\titles.json"
 
 #ejecuta EndPoint y guarda la respuesta
 llamar_endpoint(d, file_Out)
