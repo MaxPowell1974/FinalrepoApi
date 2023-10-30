@@ -17,7 +17,8 @@ def guardar_contenido_archivo(ubicacion, contenido):
     #Guardo el json obtenido en un archivo
          #usar a para append  
         if not os.path.exists(ubicacion):
-                t = open(ubicacion,"w") 
+                os.mkdir("pelis")
+                t = open(ubicacion,"w+") 
         else:
                 t = open(ubicacion,"a") 
         t.write(contenido)
@@ -27,13 +28,14 @@ def guardar_contenido_archivo(ubicacion, contenido):
 def guardar_titulo_Search(rta, file):
         for rta  in rta['Search']:
                 titulo = rta['Title'] + '\n'
-                if not os.path.exists(file):
-                        t = open(file,"w") 
-                else:
-                        f = open(file, "a")
-                f.write(titulo)
-                f.close()     
-                return True
+              #  if os.path.exists(file):
+                      
+              #          t = open(file,"w+") 
+                # else:
+        f = open(file, "a")
+        f.write(titulo)
+        f.close()     
+        return True
 
 def llamar_endpoint(d, ubicacion):
         #for url in d.values():
