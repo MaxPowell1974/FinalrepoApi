@@ -31,8 +31,9 @@ def guardar_contenido_archivo(ubicacion, contenido):
         return True
 
 def guardar_titulo_Search(rta, file):
+        titulo = ""
         for rta  in rta['Search']:
-                titulo = rta['Title'] + '\n'
+                titulo = titulo + rta['Title'] + '\n'
               #  if os.path.exists(file):
                       
               #          t = open(file,"w+") 
@@ -55,25 +56,25 @@ def llamar_endpoint(d, ubicacion):
                             print(r"grabo bien")
 
 
+if __name__ == "__main__":
+
+        d = {
+        "urlTitu": 'http://www.omdbapi.com/?apikey=dfb74b32&t=spiderman&plot=full&r=json',
+        "urlBusc": 'http://www.omdbapi.com/?apikey=dfb74b32&plot=full&r=json&S=spider'
+        }
+
+        rtas = {
+                "urlTitu": '',
+                "urlBusc": ''
+        }
 
 
-d = {
-  "urlTitu": 'http://www.omdbapi.com/?apikey=dfb74b32&t=spiderman&plot=full&r=json',
-  "urlBusc": 'http://www.omdbapi.com/?apikey=dfb74b32&plot=full&r=json&S=spider'
-}
+        file_Out = r"pelis\Pru\otro\output.json"
+        file_title_search = r"pelis\algo\otro\titles.json"
 
-rtas = {
-        "urlTitu": '',
-        "urlBusc": ''
-}
-
-
-file_Out = r"pelis\Pru\otro\output.json"
-file_title_search = r"pelis\algo\otro\titles.json"
-
-#ejecuta EndPoint y guarda la respuesta
-llamar_endpoint(d, file_Out)
-    
-#Filtramos solo los titulos y los guardamos en un archivo
-guardar_titulo_Search(rtas.get('urlBusc').json(), file_title_search)
+        #ejecuta EndPoint y guarda la respuesta
+        llamar_endpoint(d, file_Out)
+        
+        #Filtramos solo los titulos y los guardamos en un archivo
+        guardar_titulo_Search(rtas.get('urlBusc').json(), file_title_search)
 
