@@ -68,9 +68,9 @@ if __name__ == "__main__":
                 "urlBusc": ''
         }
 
-
-        file_Out = r"pelis\Pru\otro\output.json"
-        file_title_search = r"pelis\algo\otro\titles.json"
+        Path = os.getcwd()
+        file_Out = Path + r"\Pru\otro\output.json"
+        file_title_search = Path + r"\algo\otro\titles.json"
 
         #ejecuta EndPoint y guarda la respuesta
         llamar_endpoint(d, file_Out)
